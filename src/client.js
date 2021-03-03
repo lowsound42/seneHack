@@ -76,7 +76,7 @@ const weatherDescElement = document.getElementById('weather-desc');
 const locationElement = document.getElementById('location');
 
 function getWeather(latitude, longitude) {
-    let api = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}`;
+    let api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}`;
     console.log(api); //min/max/feel-like temp, sunrise, sunset, location...
     fetch(api)
         .then((response) => response.json())
