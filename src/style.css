@@ -28,13 +28,6 @@ body {
     font-size: 20px;
 }
 
-#feed {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin-top: 2rem;
-}
-
 .feedCard {
     width: 85%;
     display: flex;
@@ -77,4 +70,12 @@ body {
 
 .invisible {
     display: none;
+}
+
+#feed {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    background-color: rgb(165, 158, 158);
 }
