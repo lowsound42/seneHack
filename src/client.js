@@ -152,6 +152,5 @@ function showError(error) {
     notificationElement.innerHTML = '<p> ${error.message} </p>';
 }
 
-document.getElementById('feedButton').addEventListener('click', getFeed);
-
+window.onload = getFeed;
 //tempElement.innerHTML = `${weather.temperature.value} degree <span>C</span>`;
