@@ -1,3 +1,5 @@
+//test for git hub 
+
 function missYou() {
     const data = {
         text: 'green'
@@ -59,6 +61,9 @@ function excited() {
         });
 }
 
+//a way to change light behavior, not just color (effect, transitiontime, alert)
+
+//Weather info
 const KELVIN = 273;
 let weather = {};
 weather.temperature = {
@@ -113,4 +118,31 @@ function showError(error) {
     notificationElement.style.display = 'block';
     notificationElement.innerHTML = "<p> ${error.message} </p>";
 }
-//tempElement.innerHTML = `${weather.temperature.value} degree <span>C</span>`;
+
+//Canlendar info
+const { google } = require('googleapis')
+const { OAuth2 } = google.auth
+const oAuth2Client = new OAuth2('319708594453-5m7gsnh763q1813ht3qeg0ihqoit7uc6.apps.googleusercontent.com', 'GngKMQbEMiRLrvwtdxP4uxaj')
+oAuth2Client.setCredentials({ refresh_token: 'xxxxx' }) //Get the token later
+
+const calendar = google.calendar({ version: 'v3', auth: oAuth2Client })
+
+const eventStartTime = new Date();
+eventStartTime.setDate(eventStartTime.getDay() + 2);
+const eventEndTime = new Date();
+eventEndTime.setDate(eventEndTime.getDay() + 365);
+
+const event = {
+    summary: 'Medication',
+    description: '2 aaa pill, a bbb pill',
+    start: {
+        dateTime: eventStartTime, //change to regular schedule
+        timeZone: -18000
+    },
+    end: {
+        dateTime: eventEndTime,
+        timeZone: -18000
+    },
+    colorId: 1,
+
+}
