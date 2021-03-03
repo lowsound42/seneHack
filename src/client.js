@@ -152,5 +152,4 @@ function showError(error) {
     notificationElement.innerHTML = '<p> ${error.message} </p>';
 }
 
-window.onload = getFeed;
 //tempElement.innerHTML = `${weather.temperature.value} degree <span>C</span>`;
