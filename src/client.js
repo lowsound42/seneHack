@@ -65,6 +65,18 @@ function excited() {
         });
 }
 
+function renderData(data) {
+    var feed = document.getElementById('feed');
+    data.forEach((element) => {
+        let tempDiv = document.createElement('div');
+        let text = document.createTextNode(
+            `colour: ${element.colour}, date: ${element.date}`
+        );
+        tempDiv.appendChild(text);
+        feed.appendChild(tempDiv);
+    });
+}
+
 function getFeed() {
     fetch('/feed', {
         method: 'GET',
@@ -74,6 +86,7 @@ function getFeed() {
     })
         .then((response) => response.json()) //parse JSON into object
         .then((data) => {
+            renderData(data);
             console.log('Success:', data);
         })
         .catch((error) => {
