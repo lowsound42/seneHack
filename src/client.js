@@ -10,7 +10,7 @@ function missYou() {
     document.body.style.backgroundColor = 'green';
     feed.innerHTML = ' ';
     getFeed();
-    fetch('http://24.212.130.181:8042/light', {
+    fetch('/light', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -34,7 +34,7 @@ function beingSleepless() {
     document.body.style.backgroundColor = 'red';
     feed.innerHTML = ' ';
     getFeed();
-    fetch('http://24.212.130.181:8042/light', {
+    fetch('/light', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -57,7 +57,7 @@ function excited() {
     const data = {
         text: 'blue'
     };
-    fetch('http://24.212.130.181:8042/light', {
+    fetch('/light', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -108,7 +108,7 @@ window.addEventListener('scroll', () => {
 });
 
 function getFeed() {
-    fetch('http://24.212.130.181:8042/feed', {
+    fetch('/feed', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
