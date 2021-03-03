@@ -110,13 +110,6 @@ function renderData(data) {
     });
 }
 
-window.addEventListener('scroll', () => {
-    const { scrollHeight, scrollTop, clientHeight } = document.documentElement;
-    if (scrollTop + clientHeight > scrollHeight - 5) {
-        setTimeout(createPost, 2000);
-    }
-});
-
 function getFeed() {
     fetch('/feed', {
         method: 'GET',
