@@ -1,6 +1,8 @@
 var feed = document.getElementById('feed');
 feed.innerHTML = ' ';
 
+function changeLight(colour) {}
+
 function missYou() {
     const data = {
         text: 'green'
@@ -8,7 +10,7 @@ function missYou() {
     document.body.style.backgroundColor = 'green';
     feed.innerHTML = ' ';
     getFeed();
-    fetch('/light', {
+    fetch('http://24.212.130.181:8042/light', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -32,7 +34,7 @@ function beingSleepless() {
     document.body.style.backgroundColor = 'red';
     feed.innerHTML = ' ';
     getFeed();
-    fetch('/light', {
+    fetch('http://24.212.130.181:8042/light', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -55,7 +57,7 @@ function excited() {
     const data = {
         text: 'blue'
     };
-    fetch('/light', {
+    fetch('http://24.212.130.181:8042/light', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -73,20 +75,40 @@ function excited() {
 
 function renderData(data) {
     feed.innerHTML = ' ';
+    data.sort(function (a, b) {
+        var keyA = new Date(a._seconds),
+            keyB = new Date(b._seconds);
+        // Compare the 2 dates
+        if (keyA < keyB) return -1;
+        if (keyA > keyB) return 1;
+        return 0;
+    });
     data.forEach((element) => {
         var d = new Date(0); // The 0 there is the key, which sets the date to the epoch
         d.setUTCSeconds(element.date._seconds);
         let tempDiv = document.createElement('div');
-        let text = document.createTextNode(
-            `colour: ${element.colour}, date: ${d}`
-        );
-        tempDiv.appendChild(text);
+        tempDiv.classList.add('feedCard');
+        let colourPara = document.createElement('p');
+        let datePara = document.createElement('p');
+        let colourText = document.createTextNode(`colour: ${element.colour}`);
+        let dateText = document.createTextNode('date: ${d}');
+        colourPara.appendChild(colourText);
+        datePara.appendChild(dateText);
+        tempDiv.appendChild(colourPara);
+        tempDiv.appendChild(datePara);
         feed.appendChild(tempDiv);
     });
 }
 
+window.addEventListener('scroll', () => {
+    const { scrollHeight, scrollTop, clientHeight } = document.documentElement;
+    if (scrollTop + clientHeight > scrollHeight - 5) {
+        setTimeout(createPost, 2000);
+    }
+});
+
 function getFeed() {
-    fetch('/feed', {
+    fetch('http://24.212.130.181:8042/feed', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
