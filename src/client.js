@@ -63,6 +63,27 @@ function excited() {
 
 //a way to change light behavior, not just color (effect, transitiontime, alert)
 
+//time info
+function getTime() {
+    let tempTime = new Date();
+    let hour = tempTime.getHours();
+    let min = tempTime.getMinutes();
+    if (min < 10) {
+        min = '0' + min;
+    }
+    if (hour < 12) {
+        return `${hour}:${min} am`;
+    } else if (hour >= 12) {
+        return `${hour}:${min} pm`;
+    }
+}
+
+function displayTime() {
+    const timeElement = document.getElementById('time');
+    timeElement.innerHTML = getTime();
+}
+displayTime();
+
 //Weather info
 const KELVIN = 273;
 let weather = {};
@@ -76,7 +97,7 @@ const locationElement = document.getElementById('location');
 
 function getWeather(latitude, longitude) {
     let api = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}`;
-    console.log(api); //min/max/feel-like temp, sunrise, sunset, location... 
+    //console.log(api); //min/max/feel-like temp, sunrise, sunset, location... 
     fetch(api)
         .then(response => response.json())
         .then(data => {
@@ -95,8 +116,8 @@ function getWeather(latitude, longitude) {
 }
 
 function displayWeahter() {
-    tempElement.innerHTML = `${weather.temperature.value}°<span>C</span>`;
-    weatherDescElement.innerHTML = weather.description;
+    tempElement.innerHTML = `${weather.temperature.value}°<span>C</span> | ${weather.description}`;
+    //weatherDescElement.innerHTML = weather.description;
     locationElement.innerHTML = `${weather.city}, ${weather.country}`;
 }
 
@@ -118,6 +139,7 @@ function showError(error) {
     notificationElement.style.display = 'block';
     notificationElement.innerHTML = "<p> ${error.message} </p>";
 }
+
 
 //Canlendar info
 const { google } = require('googleapis')
