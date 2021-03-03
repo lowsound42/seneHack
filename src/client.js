@@ -69,7 +69,7 @@ function renderData(data) {
     var feed = document.getElementById('feed');
     data.forEach((element) => {
         var d = new Date(0); // The 0 there is the key, which sets the date to the epoch
-        d.setUTCSeconds(data.date.seconds);
+        d.setUTCSeconds(element.date._seconds);
         let tempDiv = document.createElement('div');
         let text = document.createTextNode(
             `colour: ${element.colour}, date: ${d}`
