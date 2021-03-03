@@ -91,7 +91,7 @@ function renderData(data) {
         let colourPara = document.createElement('p');
         let datePara = document.createElement('p');
         let colourText = document.createTextNode(`colour: ${element.colour}`);
-        let dateText = document.createTextNode('date: ${d}');
+        let dateText = document.createTextNode(`date: ${d}`);
         colourPara.appendChild(colourText);
         datePara.appendChild(dateText);
         tempDiv.appendChild(colourPara);
