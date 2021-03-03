@@ -1,13 +1,22 @@
 var feed = document.getElementById('feed');
 feed.innerHTML = ' ';
 
-function changeLight(colour) {}
+function loadScreen() {
+    setTimeout(function () {
+        document.body.className = ' ';
+        let splash = document.getElementById('splashScreen');
+        let main = document.getElementById('postSplash');
+        splash.classList.add('invisible');
+        main.classList.remove('invisible');
+    }, 2000);
+}
 
 function missYou() {
     const data = {
         text: 'green'
     };
-    document.body.style.backgroundColor = 'green';
+    document.body.className = ' ';
+    document.body.className = 'green';
     feed.innerHTML = ' ';
     getFeed();
     fetch('/light', {
@@ -30,8 +39,8 @@ function beingSleepless() {
     const data = {
         text: 'red'
     };
-
-    document.body.style.backgroundColor = 'red';
+    document.body.className = ' ';
+    document.body.className = 'red';
     feed.innerHTML = ' ';
     getFeed();
     fetch('/light', {
@@ -51,7 +60,8 @@ function beingSleepless() {
 }
 
 function excited() {
-    document.body.style.backgroundColor = 'blue';
+    document.body.className = ' ';
+    document.body.className = 'blue';
     feed.innerHTML = ' ';
     getFeed();
     const data = {
@@ -180,5 +190,8 @@ function showError(error) {
     notificationElement.innerHTML = '<p> ${error.message} </p>';
 }
 
-window.onload = getFeed;
+window.onload = function () {
+    getFeed();
+    loadScreen();
+};
 //tempElement.innerHTML = `${weather.temperature.value} degree <span>C</span>`;

@@ -46,3 +46,35 @@ body {
     -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.23);
     box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.23);
 }
+
+.green {
+    height: 97vh;
+    background: linear-gradient(0deg, #a1dcbc 0%, #199eaf 100%);
+    background-repeat: repeat;
+}
+
+.blue {
+    height: 97vh;
+    background: linear-gradient(
+        347.96deg,
+        #eadcfe 0%,
+        #feebfc 25.41%,
+        rgba(162, 210, 254, 0.77) 51.93%,
+        #e1d8fc 75.14%,
+        #cfa5dc 100%
+    );
+}
+
+.red {
+    height: 97vh;
+    background: linear-gradient(0deg, #fdd1a9 0%, #ffd6ea 100%);
+}
+
+.splash {
+    background-color: #fdd1a9;
+    margin-top: 15rem;
+}
+
+.invisible {
+    display: none;
+}

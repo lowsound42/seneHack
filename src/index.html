@@ -16,29 +16,32 @@
 
 </head>
 
-<body>
-    <section class="weather">
-        <h2><b>How are you feeling?</b></h2>
-        <div>
-            <p><b>Weather Now</b></p>
-        </div>
-        <div id="temperature">-°<span>C</span>
-        </div>
-        <div id="weather-desc">
+<body class="splash">
+    <div id="splashScreen">
+        <img class="image" src='./delight.png' />
+    </div>
+    <div id="postSplash" class="invisible">
+        <section class="weather">
+            <h2><b>How are you feeling?</b></h2>
+            <div id="temperature">-°<span>C</span>
+            </div>
+            <div id="weather-desc">
 
-        </div>
-        <div id="location">
+            </div>
+            <div id="location">
 
-        </div>
-    </section>
-    <section class="mood">
-        <button onclick="missYou()">Missing You</button>
-        <button onclick="beingSleepless()">Can't sleep</button>
-        <button onclick="excited()">Feeling Excited</button>
-    </section>
-    <section id="feed">
+            </div>
+        </section>
+        <section class="mood">
+            <button onclick="missYou()">Missing You</button>
+            <button onclick="beingSleepless()">Can't sleep</button>
+            <button onclick="excited()">Feeling Excited</button>
+        </section>
+        <section id="feed">
 
-    </section>
+        </section>
+    </div>
+
     <script src="./client.js" async defer></script>
 </body>
 
