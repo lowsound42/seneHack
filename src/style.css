@@ -1,0 +1,15 @@
+html {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat';
+    align-content: center;
+    line-height: 1.5;
+}
+
+.weather {
+    max-width: 640px;
+    min-height: 200px;
+    background: #F7FFF7;
+}

@@ -6,18 +6,39 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Test</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Hugging Light</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
-  <button onclick="missYou();">Test Miss Function</button>
+    <section class="weather">
+        <h2><b>How are you feeling?</b></h2>
+        <div>
+            <p><b>Weather</b></p>
+        </div>
+        <div>
+            <p id="temperature">-°<span>C</span></p>
+        </div>
+        <div id="weather-desc">
 
-  <script src="./client.js" async defer></script>
+        </div>
+        <div id="location">
+
+        </div>
+        <script src="./client.js" async defer></script>
+    </section>
+    <section class="mood">
+        <button onclick="missYou()">Missing You</button>
+        <button onclick="beingSleepless()">Can't sleep</button>
+        <button onclick="excited()">Feeling Excited</button>
+    </section>
+
 </body>
 
 </html>
