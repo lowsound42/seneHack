@@ -6,10 +6,9 @@ function loadScreen() {
         document.body.className = ' ';
         let splash = document.getElementById('splashScreen');
         let main = document.getElementById('postSplash');
-        let feedList = document.getElementById('feed');
         splash.classList.add('invisible');
         main.classList.remove('invisible');
-        feedList.classList.remove('invisible');
+        getFeed();
     }, 2000);
 }
 
@@ -186,7 +185,6 @@ function showError(error) {
 }
 
 window.onload = function () {
-    getFeed();
     loadScreen();
 };
 //tempElement.innerHTML = `${weather.temperature.value} degree <span>C</span>`;
