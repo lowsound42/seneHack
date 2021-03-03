@@ -1,10 +1,11 @@
+var feed = document.getElementById('feed');
+
 function missYou() {
     const data = {
         text: 'green'
     };
-    var feed = document.getElementById('feed');
     document.body.style.backgroundColor = 'green';
-    feed.innerHTML(' ');
+    feed.innerHTML = ' ';
     getFeed();
     fetch('/light', {
         method: 'POST',
@@ -26,9 +27,9 @@ function beingSleepless() {
     const data = {
         text: 'red'
     };
-    var feed = document.getElementById('feed');
+
     document.body.style.backgroundColor = 'red';
-    feed.innerHTML(' ');
+    feed.innerHTML = ' ';
     getFeed();
     fetch('/light', {
         method: 'POST',
@@ -47,9 +48,8 @@ function beingSleepless() {
 }
 
 function excited() {
-    var feed = document.getElementById('feed');
     document.body.style.backgroundColor = 'blue';
-    feed.innerHTML(' ');
+    feed.innerHTML = ' ';
     getFeed();
     const data = {
         text: 'blue'
@@ -71,7 +71,7 @@ function excited() {
 }
 
 function renderData(data) {
-    var feed = document.getElementById('feed');
+    feed.innerHTML = ' ';
     data.forEach((element) => {
         var d = new Date(0); // The 0 there is the key, which sets the date to the epoch
         d.setUTCSeconds(element.date._seconds);
