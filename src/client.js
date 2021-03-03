@@ -86,14 +86,6 @@ function excited() {
 
 function renderData(data) {
     feed.innerHTML = ' ';
-    data.sort(function (a, b) {
-        var keyA = new Date(a._seconds),
-            keyB = new Date(b._seconds);
-        // Compare the 2 dates
-        if (keyA < keyB) return -1;
-        if (keyA > keyB) return 1;
-        return 0;
-    });
     data.forEach((element) => {
         var d = new Date(0); // The 0 there is the key, which sets the date to the epoch
         d.setUTCSeconds(element.date._seconds);
