@@ -20,29 +20,31 @@
     <div id="splashScreen">
         <img class="image" src='./delight.png' />
     </div>
-    <div id="postSplash" class="invisible">
-        <section class="weather">
-            <h2><b>How are you feeling?</b></h2>
-            <div id="temperature">-°<span>C</span>
-            </div>
-            <div id="weather-desc">
+    <section id="postSplash" class="invisible">
+        <div id="theMeat">
+            <section class="weather">
+                <h2><b>How are you feeling?</b></h2>
+                <div id="temperature">-°<span>C</span>
+                </div>
+                <div id="weather-desc">
 
-            </div>
-            <div id="location">
+                </div>
+                <div id="location">
 
+                </div>
+            </section>
+            <section class="mood">
+                <button onclick="missYou()">Missing You</button>
+                <button onclick="beingSleepless()">Can't sleep</button>
+                <button onclick="excited()">Feeling Excited</button>
+            </section>
+            <div>
+                <p>Scroll down for your emotion feed</p>
             </div>
-        </section>
-        <section class="mood">
-            <button onclick="missYou()">Missing You</button>
-            <button onclick="beingSleepless()">Can't sleep</button>
-            <button onclick="excited()">Feeling Excited</button>
-        </section>
-        <div>
-            <p>Scroll down for your emotion feed</p>
-        </div>
-        <section id="feed">
+    </section>
+    <section id="feed">
 
-        </section>
+    </section>
     </div>
 
     <script src="./client.js" async defer></script>
