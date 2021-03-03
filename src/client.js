@@ -7,7 +7,7 @@ function missYou() {
     };
     document.body.style.backgroundColor = 'green';
     feed.innerHTML = ' ';
-    getFeed;
+    getFeed();
     fetch('/light', {
         method: 'POST',
         headers: {
@@ -31,7 +31,7 @@ function beingSleepless() {
 
     document.body.style.backgroundColor = 'red';
     feed.innerHTML = ' ';
-    getFeed;
+    getFeed();
     fetch('/light', {
         method: 'POST',
         headers: {
@@ -51,7 +51,7 @@ function beingSleepless() {
 function excited() {
     document.body.style.backgroundColor = 'blue';
     feed.innerHTML = ' ';
-    getFeed;
+    getFeed();
     const data = {
         text: 'blue'
     };
