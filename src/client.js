@@ -8,6 +8,7 @@ function loadScreen() {
         let main = document.getElementById('postSplash');
         splash.classList.add('invisible');
         main.classList.remove('invisible');
+        feed.classList.remove('invisible');
     }, 2000);
 }
 
