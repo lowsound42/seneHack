@@ -65,6 +65,22 @@ function excited() {
         });
 }
 
+function getFeed() {
+    fetch('/feed', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+        .then((response) => response.json()) //parse JSON into object
+        .then((data) => {
+            console.log('Success:', data);
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+}
+
 const KELVIN = 273;
 let weather = {};
 weather.temperature = {
@@ -120,4 +136,6 @@ function showError(error) {
     notificationElement.style.display = 'block';
     notificationElement.innerHTML = '<p> ${error.message} </p>';
 }
+
+window.onload = getFeed;
 //tempElement.innerHTML = `${weather.temperature.value} degree <span>C</span>`;
