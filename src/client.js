@@ -2,7 +2,7 @@ var feed = document.getElementById('feed');
 feed.innerHTML = ' ';
 
 function loadScreen() {
-    setTimeout(function() {
+    setTimeout(function () {
         document.body.className = ' ';
         let splash = document.getElementById('splashScreen');
         let main = document.getElementById('postSplash');
@@ -15,15 +15,15 @@ function loadScreen() {
 function changeLight(colour) {
     const data = {};
     data.text = colour;
-    fetch('http://24.212.130.181:8042/light', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-        .then(response => response.json()) //parse JSON into object
-        .then(data => {
+    fetch('/light', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+        .then((response) => response.json()) //parse JSON into object
+        .then((data) => {
             console.log('Success:', data);
         })
         .catch((error) => {
@@ -76,12 +76,12 @@ function renderData(data) {
 
 function getFeed() {
     console.log('HERE');
-    fetch('http://24.212.130.181:8042/feed', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
+    fetch('/feed', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
         .then((response) => response.json()) //parse JSON into object
         .then((data) => {
             renderData(data);
@@ -91,7 +91,6 @@ function getFeed() {
             console.error(error);
         });
 }
-
 
 //a way to change light behavior, not just color (effect, transitiontime, alert)
 
@@ -175,7 +174,7 @@ function showError(error) {
     notificationElement.innerHTML = '<p> ${error.message} </p>';
 }
 
-window.onload = function() {
+window.onload = function () {
     loadScreen();
 };
 //tempElement.innerHTML = `${weather.temperature.value} degree <span>C</span>`;
