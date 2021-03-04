@@ -1,5 +1,11 @@
 var feed = document.getElementById('feed');
 feed.innerHTML = ' ';
+var url = '';
+if (window.location.href == 'http://127.0.0.1:5500/') {
+    url = 'http://24.212.130.181:8042/';
+} else {
+    url = '/';
+}
 
 function loadScreen() {
     setTimeout(function () {
@@ -16,7 +22,7 @@ function changeLight(colour) {
     const data = {};
     data.text = colour;
     document.body.className = colour;
-    fetch('http://24.212.130.181:8042/light', {
+    fetch(`${url}light`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -78,7 +84,7 @@ function renderData(data) {
 
 function getFeed() {
     console.log('HERE');
-    fetch('http://24.212.130.181:8042/feed', {
+    fetch(`${url}feed`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
@@ -139,9 +145,6 @@ function getWeather(latitude, longitude) {
             weather.iconId = data.weather[0].icon;
             weather.city = data.name;
             weather.country = data.sys.country;
-            // console.log(weather.temperature.value);
-            // console.log(weather.description);
-            // console.log(weather.city);
         })
         .then(() => {
             displayWeahter();
@@ -150,9 +153,7 @@ function getWeather(latitude, longitude) {
 
 function displayWeahter() {
     tempElement.innerHTML = `${weather.temperature.value}°<span>C</span>`;
-    weatherDescElement.innerHTML = weather.description;
     tempElement.innerHTML = `${weather.temperature.value}°<span>C</span> | ${weather.description}`;
-    //weatherDescElement.innerHTML = weather.description;
     locationElement.innerHTML = `${weather.city}, ${weather.country}`;
 }
 
