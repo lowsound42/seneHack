@@ -9,6 +9,9 @@ h2 {
 body {
     background: #f7fff7;
     min-height: 400px;
+    background: #F7FFF7;
+    max-width: 640px;
+    min-height: 200px;
     font-family: 'Montserrat';
     font-size: 23px;
     align-items: center;
@@ -18,7 +21,7 @@ body {
 }
 
 .mood button {
-    min-width: 150px;
+    width: 180px;
     margin-top: 10px;
     background: beige;
     border-radius: 4px;

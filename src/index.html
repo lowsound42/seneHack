@@ -23,6 +23,7 @@
         <div id="theMeat">
             <section class="weather">
                 <h2><b>How are you feeling?</b></h2>
+                <div id="time">--:-- --</div>
                 <div id="temperature">-°<span>C</span>
                 </div>
                 <div id="weather-desc">
@@ -33,9 +34,10 @@
                 </div>
             </section>
             <section class="mood">
-                <button onclick="missYou()">Missing You</button>
-                <button onclick="beingSleepless()">Can't sleep</button>
-                <button onclick="excited()">Feeling Excited</button>
+                <button onclick="changeLight('green')">Missing You</button>
+                <button onclick="changeLight('red')">Can't sleep</button>
+                <button onclick="changeLight('blue')">Feeling Excited</button>
+                <button>So Touching</button>
             </section>
             <div>
                 <p>Scroll down for your emotion feed</p>

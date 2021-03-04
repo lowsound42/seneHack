@@ -2,7 +2,7 @@ var feed = document.getElementById('feed');
 feed.innerHTML = ' ';
 
 function loadScreen() {
-    setTimeout(function () {
+    setTimeout(function() {
         document.body.className = ' ';
         let splash = document.getElementById('splashScreen');
         let main = document.getElementById('postSplash');
@@ -12,71 +12,18 @@ function loadScreen() {
     }, 2000);
 }
 
-function missYou() {
-    const data = {
-        text: 'green'
-    };
-    document.body.className = ' ';
-    document.body.className = 'green';
-    feed.innerHTML = ' ';
-    getFeed();
+function changeLight(colour) {
+    const data = {};
+    data.text = colour;
     fetch('http://24.212.130.181:8042/light', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    })
-        .then((response) => response.json()) //parse JSON into object
-        .then((data) => {
-            console.log('Success:', data);
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
         })
-        .catch((error) => {
-            console.error(error);
-        });
-}
-
-function beingSleepless() {
-    const data = {
-        text: 'red'
-    };
-    document.body.className = ' ';
-    document.body.className = 'red';
-    feed.innerHTML = ' ';
-    getFeed();
-    fetch('http://24.212.130.181:8042/light', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    })
-        .then((response) => response.json()) //parse JSON into object
-        .then((data) => {
-            console.log('Success:', data);
-        })
-        .catch((error) => {
-            console.error(error);
-        });
-}
-//pr test
-function excited() {
-    document.body.className = ' ';
-    document.body.className = 'blue';
-    feed.innerHTML = ' ';
-    getFeed();
-    const data = {
-        text: 'blue'
-    };
-    fetch('http://24.212.130.181:8042/light', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    })
-        .then((response) => response.json()) //parse JSON into object
-        .then((data) => {
+        .then(response => response.json()) //parse JSON into object
+        .then(data => {
             console.log('Success:', data);
         })
         .catch((error) => {
@@ -130,11 +77,11 @@ function renderData(data) {
 function getFeed() {
     console.log('HERE');
     fetch('http://24.212.130.181:8042/feed', {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
         .then((response) => response.json()) //parse JSON into object
         .then((data) => {
             renderData(data);
@@ -145,6 +92,31 @@ function getFeed() {
         });
 }
 
+
+//a way to change light behavior, not just color (effect, transitiontime, alert)
+
+//time info
+function getTime() {
+    let tempTime = new Date();
+    let hour = tempTime.getHours();
+    let min = tempTime.getMinutes();
+    if (min < 10) {
+        min = '0' + min;
+    }
+    if (hour < 12) {
+        return `${hour}:${min} am`;
+    } else if (hour >= 12) {
+        return `${hour}:${min} pm`;
+    }
+}
+
+function displayTime() {
+    const timeElement = document.getElementById('time');
+    timeElement.innerHTML = getTime();
+}
+displayTime();
+
+//Weather info
 const KELVIN = 273;
 let weather = {};
 weather.temperature = {
@@ -178,6 +150,8 @@ function getWeather(latitude, longitude) {
 function displayWeahter() {
     tempElement.innerHTML = `${weather.temperature.value}°<span>C</span>`;
     weatherDescElement.innerHTML = weather.description;
+    tempElement.innerHTML = `${weather.temperature.value}°<span>C</span> | ${weather.description}`;
+    //weatherDescElement.innerHTML = weather.description;
     locationElement.innerHTML = `${weather.city}, ${weather.country}`;
 }
 
@@ -201,7 +175,7 @@ function showError(error) {
     notificationElement.innerHTML = '<p> ${error.message} </p>';
 }
 
-window.onload = function () {
+window.onload = function() {
     loadScreen();
 };
 //tempElement.innerHTML = `${weather.temperature.value} degree <span>C</span>`;
