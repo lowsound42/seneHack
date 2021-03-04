@@ -9,23 +9,23 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Delight | Send an Emotion</title>
-    <link rel="icon" type="image/png" href="./favicon-16x16.png" />
+    <link rel="icon" type="image/png" href="./assets/favicon-16x16.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./styles/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
 
 </head>
 
 <body class="splash">
     <div id="splashScreen">
-        <img class="image" src='./delight.png' />
+        <img class="image" src='./assets/delight.png' />
     </div>
     <section id="postSplash" class="invisible">
         <div id="theMeat">
-            <img id="veronica" class="invisible" src="./veronica.png" />
+            <img id="veronica" class="invisible" src="./assets/veronica.png" />
             <section class="weather">
                 <div class="weatherFlex">
-                    <img src="./avatar-omar.png" width="50" />
+                    <img src="./assets/avatar-omar.png" width="50" />
                     <p>Grandpa</p>
                 </div>
                 <div class="weatherFlex">
@@ -43,18 +43,18 @@
                     </div>
                 </div>
             </section>
-            <a id="feedButton" href="feed.html">Reveal your Emotion Feed</a>
+            <a id="feedButton" href="feed.html">Make sense of your Emotional Lightscape</a>
             <section class="mood">
                 <button id="greenButton" class="moodButton" onclick="changeLight('green')">
-                    <img src='/green.png'>Missing
+                    <img src='./assets/green.png'>Missing
                     You
                 </button>
                 <button id="redButton" class="moodButton" onclick="changeLight('red')">
-                    <img src='/red.png'>Can't
+                    <img src='./assets/red.png'>Can't
                     sleep
                 </button>
                 <button id="blueButton" class="moodButton" onclick="changeLight('blue')">
-                    <img src='/blue.png'>Feeling
+                    <img src='./assets/blue.png'>Feeling
                     Excited
                 </button>
             </section>
@@ -62,7 +62,7 @@
 
     </div>
 
-    <script src=" ./client.js" async defer>
+    <script src=" ./scripts/client.js" async defer>
     </script>
 </body>
 

@@ -181,6 +181,10 @@ body {
     margin-bottom: 2rem;
 }
 
+a {
+    color: black;
+}
+
 #noData {
     width: 80%;
     margin: 0 auto;
