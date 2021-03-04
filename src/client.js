@@ -20,7 +20,7 @@ function missYou() {
     document.body.className = 'green';
     feed.innerHTML = ' ';
     getFeed();
-    fetch('/light', {
+    fetch('http://24.212.130.181:8042/light', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -44,7 +44,7 @@ function beingSleepless() {
     document.body.className = 'red';
     feed.innerHTML = ' ';
     getFeed();
-    fetch('/light', {
+    fetch('http://24.212.130.181:8042/light', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -68,7 +68,7 @@ function excited() {
     const data = {
         text: 'blue'
     };
-    fetch('/light', {
+    fetch('http://24.212.130.181:8042/light', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -85,33 +85,51 @@ function excited() {
 }
 
 function renderData(data) {
+    const characters = [
+        'panda',
+        'ostrich',
+        'armadillo',
+        'wolverine',
+        'koala',
+        'grasshopper',
+        'shrimp'
+    ];
+
     feed.innerHTML = ' ';
     data.forEach((element) => {
+        var character =
+            characters[Math.floor(Math.random() * characters.length)];
+        var emotion = '';
         var d = new Date(0); // The 0 there is the key, which sets the date to the epoch
         d.setUTCSeconds(element.date._seconds);
         let tempDiv = document.createElement('div');
         tempDiv.classList.add('feedCard');
         if (element.colour == 'green') {
-            tempDiv.classList.add('green');
+            tempDiv.classList.add('greenSmall');
+            emotion = 'missed you';
         } else if (element.colour == 'red') {
-            tempDiv.classList.add('red');
+            tempDiv.classList.add('redSmall');
+            emotion = "couldn't sleep";
         } else {
-            tempDiv.classList.add('blue');
+            tempDiv.classList.add('blueSmall');
+            emotion = 'was excited!';
         }
         let colourPara = document.createElement('p');
         let datePara = document.createElement('p');
-        let colourText = document.createTextNode(`colour: ${element.colour}`);
+        let colourText = document.createTextNode(
+            'Anonymous ' + character + '\n' + emotion
+        );
         let dateText = document.createTextNode(`date: ${d}`);
+        colourPara.classList.add('paraStyle');
         colourPara.appendChild(colourText);
-        datePara.appendChild(dateText);
         tempDiv.appendChild(colourPara);
-        tempDiv.appendChild(datePara);
         feed.appendChild(tempDiv);
     });
 }
 
 function getFeed() {
-    fetch('/feed', {
+    console.log('HERE');
+    fetch('http://24.212.130.181:8042/feed', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'

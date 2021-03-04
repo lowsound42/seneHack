@@ -84,3 +84,33 @@ body {
     height: 90vh;
     margin-top: 15vh;
 }
+
+.greenSmall {
+    height: 10rem;
+    width: 70%;
+    background: linear-gradient(0deg, #a1dcbc 0%, #199eaf 100%);
+    background-repeat: repeat;
+}
+
+.blueSmall {
+    height: 10rem;
+    width: 70%;
+    background: linear-gradient(
+        347.96deg,
+        #eadcfe 0%,
+        #feebfc 25.41%,
+        rgba(162, 210, 254, 0.77) 51.93%,
+        #e1d8fc 75.14%,
+        #cfa5dc 100%
+    );
+}
+
+.redSmall {
+    height: 10rem;
+    width: 70%;
+    background: linear-gradient(0deg, #fdd1a9 0%, #ffd6ea 100%);
+}
+
+.paraStyle {
+    font-weight: bold;
+}
