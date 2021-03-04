@@ -16,7 +16,7 @@ function changeLight(colour) {
     const data = {};
     data.text = colour;
     document.body.className = colour;
-    fetch('/light', {
+    fetch('http://24.212.130.181:8042/light', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -78,7 +78,7 @@ function renderData(data) {
 
 function getFeed() {
     console.log('HERE');
-    fetch('/feed', {
+    fetch('http://24.212.130.181:8042/feed', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
