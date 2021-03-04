@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Delight | Send an Emotion</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
+
+</head>
+
+<<<<<<< HEAD
+<body>
+    <section class="weather">
+        <h2><b>How are you feeling?</b></h2>
+        <div id="time">--:-- --</div>
+        <!-- <div>
+            <p></p><b>Weather Now</b></p>
+        </div> -->
+        <div id="temperature">-°<span>C</span>
+        </div>
+        <div id="weather-desc">
+
+        </div>
+        <div id="location">
+
+        </div>
+        <script src="./client.js" async defer></script>
+    </section>
+    <section class="mood">
+        <button onclick="changeLight('green')">Missing You</button>
+        <button onclick="changeLight('red')">Can't sleep</button>
+        <button onclick="changeLight('blue')">Feeling Excited</button>
+        <button>So Touching</button>
+        <!-- G' day blue
+        helpless green
+        touching purple
+         -->
+=======
+<body class="splash">
+    <div id="splashScreen">
+        <img class="image" src='./delight.png' />
+    </div>
+    <section id="postSplash" class="invisible">
+        <div id="theMeat">
+            <section class="weather">
+                <h2><b>How are you feeling?</b></h2>
+                <div id="temperature">-°<span>C</span>
+                </div>
+                <div id="weather-desc">
+
+                </div>
+                <div id="location">
+
+                </div>
+            </section>
+            <section class="mood">
+                <button onclick="missYou()">Missing You</button>
+                <button onclick="beingSleepless()">Can't sleep</button>
+                <button onclick="excited()">Feeling Excited</button>
+            </section>
+            <div>
+                <p>Scroll down for your emotion feed</p>
+            </div>
+    </section>
+    <section id="feed">
+>>>>>>> 92c9a9e78aee75e2390219c4cfddbb0d7ed1a793
+
+    </section>
+    </div>
+
+    <script src=" ./client.js" async defer>
+    </script>
+</body>
+
+</html>

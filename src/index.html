@@ -8,6 +8,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Delight | Send an Emotion</title>
     <title>Hugging Light</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,35 +17,41 @@
 
 </head>
 
-<body>
-    <section class="weather">
-        <h2><b>How are you feeling?</b></h2>
-        <div id="time">--:-- --</div>
-        <!-- <div>
-            <p></p><b>Weather Now</b></p>
-        </div> -->
-        <div id="temperature">-°<span>C</span>
-        </div>
-        <div id="weather-desc">
+<body class="splash">
+    <div id="splashScreen">
+        <img class="image" src='./delight.png' />
+    </div>
+    <section id="postSplash" class="invisible">
+        <div id="theMeat">
+            <section class="weather">
+                <h2><b>How are you feeling?</b></h2>
+                <div id="time">--:-- --</div>
+                <div id="temperature">-°<span>C</span>
+                </div>
+                <div id="weather-desc">
 
-        </div>
-        <div id="location">
+                </div>
+                <div id="location">
 
-        </div>
-        <script src="./client.js" async defer></script>
+                </div>
+            </section>
+            <section class="mood">
+                <button onclick="changeLight('green')">Missing You</button>
+                <button onclick="changeLight('red')">Can't sleep</button>
+                <button onclick="changeLight('blue')">Feeling Excited</button>
+                <button>So Touching</button>
+            </section>
+            <div>
+                <p>Scroll down for your emotion feed</p>
+            </div>
     </section>
-    <section class="mood">
-        <button onclick="changeLight('green')">Missing You</button>
-        <button onclick="changeLight('red')">Can't sleep</button>
-        <button onclick="changeLight('blue')">Feeling Excited</button>
-        <button>So Touching</button>
-        <!-- G' day blue
-        helpless green
-        touching purple
-         -->
+    <section id="feed">
 
     </section>
+    </div>
 
+    <script src=" ./client.js" async defer>
+    </script>
 </body>
 
 </html>

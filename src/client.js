@@ -1,4 +1,16 @@
-//test for git hub 
+var feed = document.getElementById('feed');
+feed.innerHTML = ' ';
+
+function loadScreen() {
+    setTimeout(function() {
+        document.body.className = ' ';
+        let splash = document.getElementById('splashScreen');
+        let main = document.getElementById('postSplash');
+        splash.classList.add('invisible');
+        main.classList.remove('invisible');
+        getFeed();
+    }, 2000);
+}
 
 function changeLight(colour) {
     const data = {};
@@ -12,6 +24,67 @@ function changeLight(colour) {
         })
         .then(response => response.json()) //parse JSON into object
         .then(data => {
+            console.log('Success:', data);
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+}
+
+function renderData(data) {
+    const characters = [
+        'panda',
+        'ostrich',
+        'armadillo',
+        'wolverine',
+        'koala',
+        'grasshopper',
+        'shrimp'
+    ];
+
+    feed.innerHTML = ' ';
+    data.forEach((element) => {
+        var character =
+            characters[Math.floor(Math.random() * characters.length)];
+        var emotion = '';
+        var d = new Date(0); // The 0 there is the key, which sets the date to the epoch
+        d.setUTCSeconds(element.date._seconds);
+        let tempDiv = document.createElement('div');
+        tempDiv.classList.add('feedCard');
+        if (element.colour == 'green') {
+            tempDiv.classList.add('greenSmall');
+            emotion = 'missed you';
+        } else if (element.colour == 'red') {
+            tempDiv.classList.add('redSmall');
+            emotion = "couldn't sleep";
+        } else {
+            tempDiv.classList.add('blueSmall');
+            emotion = 'was excited!';
+        }
+        let colourPara = document.createElement('p');
+        let datePara = document.createElement('p');
+        let colourText = document.createTextNode(
+            'Anonymous ' + character + '\n' + emotion
+        );
+        let dateText = document.createTextNode(`date: ${d}`);
+        colourPara.classList.add('paraStyle');
+        colourPara.appendChild(colourText);
+        tempDiv.appendChild(colourPara);
+        feed.appendChild(tempDiv);
+    });
+}
+
+function getFeed() {
+    console.log('HERE');
+    fetch('http://24.212.130.181:8042/feed', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then((response) => response.json()) //parse JSON into object
+        .then((data) => {
+            renderData(data);
             console.log('Success:', data);
         })
         .catch((error) => {
@@ -47,19 +120,19 @@ displayTime();
 const KELVIN = 273;
 let weather = {};
 weather.temperature = {
-    unit: "celsius"
-}
-const key = "48c7cf84c45dc694e28933f6b91317b9";
+    unit: 'celsius'
+};
+const key = '48c7cf84c45dc694e28933f6b91317b9';
 const tempElement = document.getElementById('temperature');
 const weatherDescElement = document.getElementById('weather-desc');
 const locationElement = document.getElementById('location');
 
 function getWeather(latitude, longitude) {
-    let api = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}`;
-    //console.log(api); //min/max/feel-like temp, sunrise, sunset, location... 
+    let api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}`;
+    console.log(api); //min/max/feel-like temp, sunrise, sunset, location...
     fetch(api)
-        .then(response => response.json())
-        .then(data => {
+        .then((response) => response.json())
+        .then((data) => {
             weather.temperature.value = Math.floor(data.main.temp - KELVIN);
             weather.description = data.weather[0].main;
             weather.iconId = data.weather[0].icon;
@@ -71,10 +144,12 @@ function getWeather(latitude, longitude) {
         })
         .then(() => {
             displayWeahter();
-        })
+        });
 }
 
 function displayWeahter() {
+    tempElement.innerHTML = `${weather.temperature.value}°<span>C</span>`;
+    weatherDescElement.innerHTML = weather.description;
     tempElement.innerHTML = `${weather.temperature.value}°<span>C</span> | ${weather.description}`;
     //weatherDescElement.innerHTML = weather.description;
     locationElement.innerHTML = `${weather.city}, ${weather.country}`;
@@ -84,7 +159,8 @@ if ('geolocation' in navigator) {
     navigator.geolocation.getCurrentPosition(setPosition, showError);
 } else {
     notificationElement.style.display = 'block';
-    notificationElement.innerHTML = "<p>Browser doesn't support Geolocation</p>";
+    notificationElement.innerHTML =
+        "<p>Browser doesn't support Geolocation</p>";
 }
 
 function setPosition(position) {
@@ -96,34 +172,10 @@ function setPosition(position) {
 
 function showError(error) {
     notificationElement.style.display = 'block';
-    notificationElement.innerHTML = "<p> ${error.message} </p>";
+    notificationElement.innerHTML = '<p> ${error.message} </p>';
 }
 
-
-//Canlendar info
-const { google } = require('googleapis')
-const { OAuth2 } = google.auth
-const oAuth2Client = new OAuth2('319708594453-5m7gsnh763q1813ht3qeg0ihqoit7uc6.apps.googleusercontent.com', 'GngKMQbEMiRLrvwtdxP4uxaj')
-oAuth2Client.setCredentials({ refresh_token: 'xxxxx' }) //Get the token later
-
-const calendar = google.calendar({ version: 'v3', auth: oAuth2Client })
-
-const eventStartTime = new Date();
-eventStartTime.setDate(eventStartTime.getDay() + 2);
-const eventEndTime = new Date();
-eventEndTime.setDate(eventEndTime.getDay() + 365);
-
-const event = {
-    summary: 'Medication',
-    description: '2 aaa pill, a bbb pill',
-    start: {
-        dateTime: eventStartTime, //change to regular schedule
-        timeZone: -18000
-    },
-    end: {
-        dateTime: eventEndTime,
-        timeZone: -18000
-    },
-    colorId: 1,
-
-}
+window.onload = function() {
+    loadScreen();
+};
+//tempElement.innerHTML = `${weather.temperature.value} degree <span>C</span>`;

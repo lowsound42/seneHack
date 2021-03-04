@@ -1,0 +1,2 @@
+/light/* http://24.212.130.181:8042/light:splat 200!
+/feed/* http://24.212.130.181:8042/feed:splat 200!
