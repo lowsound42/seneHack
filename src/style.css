@@ -9,7 +9,7 @@ h2 {
 body {
     background: #f7fff7;
     min-height: 400px;
-    background: #F7FFF7;
+    background: #f7fff7;
     max-width: 640px;
     min-height: 200px;
     font-family: 'Montserrat';
@@ -78,7 +78,7 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    margin-top: 12rem;
+    margin-top: 2rem;
     width: 100%;
     background-color: rgb(165, 158, 158);
 }
