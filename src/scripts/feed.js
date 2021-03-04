@@ -63,7 +63,6 @@ function renderData(data) {
 }
 
 function getFeed() {
-    console.log('HERE');
     fetch(`${url}feed`, {
         method: 'GET',
         headers: {

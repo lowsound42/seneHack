@@ -1,4 +1,3 @@
-console.log(window.location.href);
 if (window.location.href == 'http://127.0.0.1:5500/') {
     url = 'http://24.212.130.181:8042/';
 } else {
@@ -71,7 +70,6 @@ const weatherDescElement = document.getElementById('weather-desc');
 const locationElement = document.getElementById('location');
 function getWeather(latitude, longitude) {
     let api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}`;
-    console.log(api); //min/max/feel-like temp, sunrise, sunset, location...
     fetch(api)
         .then((response) => response.json())
         .then((data) => {
