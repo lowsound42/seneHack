@@ -15,6 +15,7 @@ function loadScreen() {
 function changeLight(colour) {
     const data = {};
     data.text = colour;
+    document.body.className = colour;
     fetch('/light', {
         method: 'POST',
         headers: {
@@ -26,6 +27,7 @@ function changeLight(colour) {
         .then((data) => {
             console.log('Success:', data);
         })
+        .then(getFeed())
         .catch((error) => {
             console.error(error);
         });
