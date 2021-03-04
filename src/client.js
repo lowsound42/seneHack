@@ -1,12 +1,8 @@
-var feed = document.getElementById('feed');
-feed.innerHTML = ' ';
-var url = '';
-if (window.location.href == 'http://127.0.0.1:5500/') {
+if (window.location.href == 'http://127.0.0.1:5500/index.html') {
     url = 'http://24.212.130.181:8042/';
 } else {
     url = '/';
 }
-
 function loadScreen() {
     setTimeout(function () {
         document.body.className = ' ';
@@ -14,7 +10,6 @@ function loadScreen() {
         let main = document.getElementById('postSplash');
         splash.classList.add('invisible');
         main.classList.remove('invisible');
-        getFeed();
     }, 2000);
 }
 
@@ -22,6 +17,8 @@ function changeLight(colour) {
     const data = {};
     data.text = colour;
     document.body.className = colour;
+    let veronica = document.getElementById('veronica');
+    veronica.classList.remove('invisible');
     fetch(`${url}light`, {
         method: 'POST',
         headers: {
@@ -31,68 +28,6 @@ function changeLight(colour) {
     })
         .then((response) => response.json()) //parse JSON into object
         .then((data) => {
-            console.log('Success:', data);
-        })
-        .then(getFeed())
-        .catch((error) => {
-            console.error(error);
-        });
-}
-
-function renderData(data) {
-    const characters = [
-        'panda',
-        'ostrich',
-        'armadillo',
-        'wolverine',
-        'koala',
-        'grasshopper',
-        'shrimp'
-    ];
-
-    feed.innerHTML = ' ';
-    data.forEach((element) => {
-        var character =
-            characters[Math.floor(Math.random() * characters.length)];
-        var emotion = '';
-        var d = new Date(0); // The 0 there is the key, which sets the date to the epoch
-        d.setUTCSeconds(element.date._seconds);
-        let tempDiv = document.createElement('div');
-        tempDiv.classList.add('feedCard');
-        if (element.colour == 'green') {
-            tempDiv.classList.add('greenSmall');
-            emotion = 'missed you';
-        } else if (element.colour == 'red') {
-            tempDiv.classList.add('redSmall');
-            emotion = "couldn't sleep";
-        } else {
-            tempDiv.classList.add('blueSmall');
-            emotion = 'was excited!';
-        }
-        let colourPara = document.createElement('p');
-        let datePara = document.createElement('p');
-        let colourText = document.createTextNode(
-            'Anonymous ' + character + '\n' + emotion
-        );
-        let dateText = document.createTextNode(`date: ${d}`);
-        colourPara.classList.add('paraStyle');
-        colourPara.appendChild(colourText);
-        tempDiv.appendChild(colourPara);
-        feed.appendChild(tempDiv);
-    });
-}
-
-function getFeed() {
-    console.log('HERE');
-    fetch(`${url}feed`, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-        .then((response) => response.json()) //parse JSON into object
-        .then((data) => {
-            renderData(data);
             console.log('Success:', data);
         })
         .catch((error) => {
@@ -133,7 +68,6 @@ const key = '48c7cf84c45dc694e28933f6b91317b9';
 const tempElement = document.getElementById('temperature');
 const weatherDescElement = document.getElementById('weather-desc');
 const locationElement = document.getElementById('location');
-
 function getWeather(latitude, longitude) {
     let api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}`;
     console.log(api); //min/max/feel-like temp, sunrise, sunset, location...
