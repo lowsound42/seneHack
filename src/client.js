@@ -91,6 +91,13 @@ function renderData(data) {
         d.setUTCSeconds(element.date._seconds);
         let tempDiv = document.createElement('div');
         tempDiv.classList.add('feedCard');
+        if (element.colour == 'green') {
+            tempDiv.classList.add('green');
+        } else if (element.colour == 'red') {
+            tempDiv.classList.add('red');
+        } else {
+            tempDiv.classList.add('blue');
+        }
         let colourPara = document.createElement('p');
         let datePara = document.createElement('p');
         let colourText = document.createTextNode(`colour: ${element.colour}`);
