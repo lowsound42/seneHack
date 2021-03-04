@@ -1,10 +1,8 @@
 //test for git hub 
 
-function missYou() {
-    const data = {
-        text: 'green'
-    };
-
+function changeLight(colour) {
+    const data = {};
+    data.text = colour;
     fetch('http://24.212.130.181:8042/light', {
             method: 'POST',
             headers: {
@@ -21,45 +19,6 @@ function missYou() {
         });
 }
 
-function beingSleepless() {
-    const data = {
-        text: 'red'
-    };
-    fetch('http://24.212.130.181:8042/light', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-        .then(response => response.json()) //parse JSON into object
-        .then(data => {
-            console.log('Success:', data);
-        })
-        .catch((error) => {
-            console.error(error);
-        });
-}
-
-function excited() {
-    const data = {
-        text: 'blue'
-    };
-    fetch('http://24.212.130.181:8042/light', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-        .then(response => response.json()) //parse JSON into object
-        .then(data => {
-            console.log('Success:', data);
-        })
-        .catch((error) => {
-            console.error(error);
-        });
-}
 
 //a way to change light behavior, not just color (effect, transitiontime, alert)
 

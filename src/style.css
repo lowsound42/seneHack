@@ -20,7 +20,7 @@ body {
 .weather {}
 
 .mood button {
-    min-width: 150px;
+    width: 180px;
     margin-top: 10px;
     background: beige;
     border-radius: 4px;
