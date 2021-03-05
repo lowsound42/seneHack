@@ -44,10 +44,24 @@ function renderData(data) {
             'Anonymous ' + character + '\n'
         );
         let emotionText = document.createTextNode(emotion);
+        let hours = d.getHours();
+        let minutes = d.getMinutes();
+        let seconds = d.getSeconds();
+        if (hours < 10) {
+            hours = '0' + hours;
+        }
+        if (minutes < 10) {
+            minutes = '0' + minutes;
+        }
+        if (seconds < 10) {
+            seconds = '0' + seconds;
+        }
+
+        console.log(minutes);
         let dateText = document.createTextNode(
             `${d.getDate()}/${
                 d.getMonth() + 1
-            }/${d.getFullYear()} ${d.getUTCHours()}:${d.getUTCMinutes()}:${d.getUTCSeconds()}`
+            }/${d.getFullYear()} ${hours}:${minutes}:${seconds}`
         );
         personPara.classList.add('feedPerson');
         emotionPara.classList.add('feedEmotion');
