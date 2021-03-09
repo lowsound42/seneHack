@@ -1,8 +1,3 @@
-if (window.location.href == 'http://127.0.0.1:5500/') {
-    url = 'http://24.212.130.181:8042/';
-} else {
-    url = '/';
-}
 function loadScreen() {
     setTimeout(function () {
         document.body.className = ' ';

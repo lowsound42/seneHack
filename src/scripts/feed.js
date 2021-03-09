@@ -1,12 +1,4 @@
 var feed = document.getElementById('feed');
-var url = '';
-if (window.location.href == 'http://127.0.0.1:5500/feed.html') {
-    url = 'http://24.212.130.181:8042/';
-    console.log();
-} else {
-    url = '/';
-}
-
 function renderData(data) {
     const characters = [
         'panda',
